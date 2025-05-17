@@ -1,0 +1,37 @@
+{
+  "clientId":"http://localhost:15001/sso/metadata",
+  "protocol":"saml",
+  "enabled":true,
+  "redirectUris":["http://localhost:15001/sso/acs"],
+  "baseUrl":"http://localhost:15001",
+  "rootUrl":"http://localhost:15001",
+  "adminUrl":"http://localhost:15001",
+  "attributes":{
+    "saml_force_name_id_format":"true",
+    "saml_name_id_format":"urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
+    "saml.authnstatement":"true",
+    "saml.assertion.signature":"false",
+    "saml.encrypt":"false",
+    "saml.multivalued.roles":"false",
+    "saml.server.signature":"false",
+    "saml.client.signature":"false"
+  },
+  "protocolMappers":[
+    {
+      "name":"username","protocol":"saml","protocolMapper":"saml-user-property-mapper",
+      "consentRequired":false,
+      "config":{
+        "user.attribute":"username","friendly.name":"username",
+        "attribute.name":"username","attribute.nameformat":"Basic"
+      }
+    },
+    {
+      "name":"email","protocol":"saml","protocolMapper":"saml-user-property-mapper",
+      "consentRequired":false,
+      "config":{
+        "user.attribute":"email","friendly.name":"email",
+        "attribute.name":"email","attribute.nameformat":"Basic"
+      }
+    }
+  ]
+}

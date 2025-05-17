@@ -1,0 +1,37 @@
+{
+  "strict": false,
+  "debug": true,
+  "sp": {
+    "entityId": "http://localhost:15001/sso/metadata",
+    "assertionConsumerService": {
+      "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
+      "url": "http://localhost:15001/sso/acs"
+    },
+    "singleLogoutService": {
+      "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect",
+      "url": "http://localhost:15001/sso/sls"
+    },
+    "NameIDFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
+    "x509cert": "-----BEGIN CERTIFICATE-----\nMIIDhzCCAm+gAwIBAgIUEPBA1V57g43+Rw6yafCL7MU7Nj4wDQYJKoZIhvcNAQEL\nBQAwUzELMAkGA1UEBhMCVVMxDDAKBgNVBAgMA0xhYjEQMA4GA1UEBwwHRGVtb09y\nZzEQMA4GA1UECgwHRGVtb09yZzESMBAGA1UEAwwJbG9jYWxob3N0MB4XDTI1MDUw\nNzAzMjMyNFoXDTI2MDUwNzAzMjMyNFowUzELMAkGA1UEBhMCVVMxDDAKBgNVBAgM\nA0xhYjEQMA4GA1UEBwwHRGVtb09yZzEQMA4GA1UECgwHRGVtb09yZzESMBAGA1UE\nAwwJbG9jYWxob3N0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwWis\nU33fLCrDH8Mp65I/Yndu5iD6ejH7TggMsrPIyMWlOapQfgJk4fGC+fmK0HpB12wL\nS+cm1Kqa8LJXmjabKxaN0BOCvkZdPaK31OqsAj5a1TAOnj4Eg0a4bsfGmPRneDpl\nlJLLZwvZi0tnxvucAiuT/ZVolOc3h6T/RZkrbzA9IdphFcauB3uPA3PZfqTrCXHC\nLwi9DpOSxRT8HtToHJYG5zhylX9GfqaFEfQhdULqG3St97RGKQ64j4zWUyzkXrAs\nJAB4JEB8C4rway6hlpBYuCyalbljW4NAKt5dQFmhwWHXEP+4kB7O7kN/l1bBz9AD\nEvjRxhalA+BzU2QNNwIDAQABo1MwUTAdBgNVHQ4EFgQUCWMiVR8Z8rRhNDx3jNnp\n8ik6EyowHwYDVR0jBBgwFoAUCWMiVR8Z8rRhNDx3jNnp8ik6EyowDwYDVR0TAQH/\nBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEARmQdGr9NFW+3LMI/TPHCOE4aBWNs\nTJsUR8Gmo3gFZyuAd585jpaMg+ufZoSQGC5Wnk34mAx1LnLIAktwhiF2YBVhpxeQ\nKgnE9xT8kFsUVSRi8iuKE2FiB9/6xfK9Y1aEb9d6se8fWGgur0miJXeCee7Zod62\nvL6RTrsO3MMWSmMdoCm8pQyKsHG0aucbRiraEPQS4hhjP6v7zBCdWUKZpOUjBgCC\nXOYucGCwKT3b1b11PBfB5v7CLcNQJVjzXXyKnTe73HBWGfvGjdfBSpJP/Tl6Wq6L\n2H0/E5e8ADN9mIYaFNNMLmWs49NiypwCtUQe+Iz+n4dVMGYUjZ0mKb5k1Q==\n-----END CERTIFICATE-----\n",
+    "privateKey": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDBaKxTfd8sKsMf\nwynrkj9id27mIPp6MftOCAyys8jIxaU5qlB+AmTh8YL5+YrQekHXbAtL5ybUqprw\nsleaNpsrFo3QE4K+Rl09orfU6qwCPlrVMA6ePgSDRrhux8aY9Gd4OmWUkstnC9mL\nS2fG+5wCK5P9lWiU5zeHpP9FmStvMD0h2mEVxq4He48Dc9l+pOsJccIvCL0Ok5LF\nFPwe1OgclgbnOHKVf0Z+poUR9CF1QuobdK33tEYpDriPjNZTLOResCwkAHgkQHwL\nivBrLqGWkFi4LJqVuWNbg0Aq3l1AWaHBYdcQ/7iQHs7uQ3+XVsHP0AMS+NHGFqUD\n4HNTZA03AgMBAAECggEAF7qIXev0+/25F8YBeCHmveVqSTilkmVccCvjpu8QxLUe\n+s6u9m7Dwsa3K4UWp1JAjrX2Qtc2t+PAg6RVxBlL+0LWnj8ujLqkSOIUTL6H4PSW\nf05YlMiGFDcSfKDs+CoQIbuEZ/CEnP1isMjNECghcVC4ZOW2QYKGmRFAsmDC5+6b\n/pzAxKRKVERmS5GpOpG9ZD/91d4ev9cOpUurye9+x1hVCLHconsK3Xnvx0ZDumye\nSjzVckgj89mltXBOYGdvi38S0Qn6XhAilNQiIpeTFiqFQiYktLcCnhIlAAFtujBE\neJQ6s7VB/eWnsN/Ri7FG0M62pKdGAfB0hTZidbICeQKBgQDp2w/OHfo/HRGychOm\nVODhiVaw5KeuasxNhRy5jiYLsw7XTUr7/e8grUyqxC7bm4tdmBWoF0fQb8wrv36I\n8LjF1gzrEmYxv6auI6naMEjBLv5JPYASQ5pu17vny7dqjb1z47iiLL6EuGqrbYit\np0AW3Bk5xiokRJU37GKzQ27HPwKBgQDTuSHtfTOLUGbh9y6JqXC/fc0XcJ50Yche\nkQFhEDhl2XxZQvJ/zGjtXfEME7ohEhOan1JcdWkgD8ddIaBeZU8j3nCGZOpaQlOD\n+invaU/xINI/+vCToMmqDp6SxnSYcmQvfpmMg5fkq6JScsCRzFbWsiQbQeOnh4Ik\nz/PRqqn0CQKBgGCbsOHTnIfqOF9hpSB3vBcwJ3IYY/U4BYKY1Q8K3EjFBgKH2cxU\nUS9MqHl7Zmguz9owc/Hm/DHtnYkNKPbli0+fZ+LMzQ8MP419CjQq8kNsaHxVPc1N\nxES6NtRBYlpQh82Sa7oDhglKLjb3nxkuGNnYv0sQxGQLOSHLM9Mermr9AoGBAIL9\noIsRkilYVj7psmZDadlf2Nrut2pj8Rbo+gR2h54j/7YuIGCHNEfffjotnlPFnlFk\nzw0bKy5F9N+e5Vxhq6QShGXx27h6Hreht/5Cls4ls08YT23W5c4L+3ntxMdoxqlH\n13JDHF/C/Mur6Y6K8RMl5gbjLhlBUni6HCyVPU8ZAoGBAIIsuOkFppW9P5xMevkl\nzFn6Q0TamH4gR74bW3n2SMfv4LML2t+5SOSrrXRNqRaIx/sCVSivpJQ4bdqQh6Qn\nbYIJjnc/+QQQJlydrQ2no1+37aujj17Y+WW4nZcp8bJj2VVqrAsisT4yTD7fUKb/\n9yLXdlKfDKW6LCETuo+Z+FSk\n-----END PRIVATE KEY-----\n"
+  },
+  "idp": {
+    "entityId": "http://localhost:8080/realms/FintechApp",
+    "singleSignOnService": {
+      "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect",
+      "url": "http://localhost:8080/realms/FintechApp/protocol/saml"
+    },
+    "singleLogoutService": {
+      "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect",
+      "url": "http://localhost:8080/realms/FintechApp/protocol/saml"
+    },
+    "x509cert": "MIICozCCAYsCBgGW1rnh1jANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDDApGaW50ZWNoQXBwMB4XDTI1MDUxNjAxMzIwOFoXDTM1MDUxNjAxMzM0OFowFTETMBEGA1UEAwwKRmludGVjaEFwcDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKa8ylCyuPXHlmdmWdxhWdgUc/w/UH/9SqU6nGcOEpLeu2J/0TQy1PHVbGY58jByHCd0NMBmf2mOhlGJVWaS4Jmn8u6LxImsO9mtyPUnbvjUwiKRuu2T7im8AwLQRPUIdLmYbyXfjRxPqZG3S4ER0fdYOdZcayICHI8RmPBdG9zvMFWjZV2av7x30IDk3yumEpF1qeS1AH99W4NuVXQlXv3AxdaTx8I/fraT39U6d7N3wtyM9wr0Rwlla4sUmKfWAuLV+WodVYOPthykEoktBf7EFvbmxxVA4+ls0VR//yQInhEV/AZZCYqbXKdrCMJ0FIt3mocO0yJb2v21kCc54EECAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAhUmdMlpamqQaYpMrxxilHrJ9QAT78JYW65pPkcsEgY/IvmViMNtICUL6Cgydt6uXHCZX+BvFVJzeQyTHBcQL0SERJuNBcaQ+ztrxfKFbHyOeyoDAzgWTOYCeGnKCB9iLXP8bYtRSKhKVEhjoUWvpJTQGQyJVsqOhWw5uoTc+Jdk+2hcirMTOpQhtiY66C95kv2o5suxc3yF9GqDh4ybmQ/qEFNXUU0j2OALo0i2JlsfqrQJNz3P+/l2xd6ZUdh8EemoE50Ry1TOLhcN58OXONOGB1IdtEFpk1cw+GFLJklMtAKiZCQFszwZcrJDXegbVDFz46SUZEBxAY4MD9xNKsA=="
+  },
+  "security": {
+    "authnRequestsSigned": false,
+    "logoutRequestSigned": false,
+    "logoutResponseSigned": false,
+    "signMetadata": false,
+    "wantAssertionsSigned": false
+  }
+}

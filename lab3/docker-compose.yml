@@ -1,0 +1,43 @@
+
+services:
+  ldap:
+    image: osixia/openldap:1.5.0
+    environment:
+      - LDAP_ORGANISATION=ExampleCorp
+      - LDAP_DOMAIN=example.org
+      - LDAP_ADMIN_PASSWORD=admin
+    ports:
+      - "389:389"
+    volumes:
+      - ldap_data:/var/lib/ldap
+      - ldap_config:/etc/ldap/slapd.d
+      - ./saml:/app/saml
+
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    command: start-dev
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin123
+    ports:
+      - "8080:8080"
+    depends_on:
+      - ldap
+    volumes:
+      - ./saml:/app/saml
+
+  app:
+    build: ./app
+    volumes:
+      - ./app:/app
+      - ./app/saml:/app/saml
+      - ./saml:/app/saml
+    ports:
+      - "15001:5000"
+    depends_on:
+      - keycloak
+
+volumes:
+  ldap_data:
+  ldap_config:

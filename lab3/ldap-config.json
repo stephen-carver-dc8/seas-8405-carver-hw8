@@ -1,0 +1,14 @@
+{
+  "name":"ldap",
+  "providerId":"ldap",
+  "providerType":"org.keycloak.storage.UserStorageProvider",
+  "config": {
+    "editMode":["READ_ONLY"],"enabled":["true"],"vendor":["other"],
+    "connectionUrl":["ldap://ldap:389"],"usersDn":["dc=example,dc=org"],
+    "authType":["simple"],"bindDn":["cn=admin,dc=example,dc=org"],"bindCredential":["admin"],
+    "userObjectClasses":["inetOrgPerson","organizationalPerson"],"searchScope":["1"],
+    "usernameLDAPAttribute":["uid"],"rdnLDAPAttribute":["uid"],"uuidLDAPAttribute":["entryUUID"],
+    "userEnabledAttribute":["userAccountControl"],"pagination":["true"],
+    "syncRegistrations":["false"],"trustEmail":["true"],"importEnabled":["true"]
+  }
+}

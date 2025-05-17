@@ -1,0 +1,10 @@
+dn: uid=jdoe,dc=example,dc=org
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: John Doe
+sn: Doe
+uid: jdoe
+userPassword: password
+mail: jdoe@example.org

@@ -1,0 +1,66 @@
+services:
+  ldap:
+    image: osixia/openldap:1.5.0
+    environment:
+      - LDAP_ORGANISATION=Example Corp
+      - LDAP_DOMAIN=example.com
+      - LDAP_ADMIN_PASSWORD=adminpw
+    ports:
+      - "389:389"
+    volumes:
+      - ldap_data:/var/lib/ldap
+      - ldap_config:/etc/ldap/slapd.d
+
+  phpldapadmin:
+    image: osixia/phpldapadmin:0.9.0
+    environment:
+      - PHPLDAPADMIN_LDAP_HOSTS=ldap
+    ports:
+      - "8081:80"
+    depends_on:
+      - ldap
+
+  kcdb:
+    image: postgres:16
+    environment:
+      - POSTGRES_DB=keycloak
+      - POSTGRES_USER=kc
+      - POSTGRES_PASSWORD=kcpass
+    volumes:
+      - kcdb_data:/var/lib/postgresql/data
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0
+    command: ["start-dev","--import-realm"]
+    environment:
+      - KC_DB=postgres
+      - KC_DB_URL=jdbc:postgresql://kcdb:5432/keycloak
+      - KC_DB_USERNAME=kc
+      - KC_DB_PASSWORD=kcpass
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    volumes:
+      - ./realm-export.json:/opt/keycloak/data/import/realm-export.json
+    ports:
+      - "8080:8080"
+    depends_on:
+      - ldap
+      - kcdb
+
+  intranet:
+    build: ./intranet
+    environment:
+      - KEYCLOAK_URL=http://host.docker.internal:8080   # Reach host's Keycloak
+      - KEYCLOAK_REALM=CentralIAM
+      - KEYCLOAK_CLIENT_ID=intranet
+    extra_hosts:
+      - "host.docker.internal:host-gateway"          # map host.docker.internal to host
+    ports:
+      - "3000:3000"
+    depends_on:
+      - keycloak
+
+volumes:
+  ldap_data:
+  ldap_config:
+  kcdb_data:

@@ -1,0 +1,17 @@
+{
+  "realm": "CentralIAM",
+  "enabled": true,
+  "clients": [
+    {
+      "clientId": "intranet",
+      "publicClient": true,
+      "directAccessGrantsEnabled": false,
+      "redirectUris": ["http://localhost:3000/*"],
+      "baseUrl": "http://localhost:3000",
+      "protocol": "openid-connect",
+      "clientAuthenticatorType": "client-secret",
+      "bearerOnly": false,
+      "fullScopeAllowed": true
+    }
+  ]
+}
