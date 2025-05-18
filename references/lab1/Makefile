@@ -6,6 +6,7 @@ DOCKER_COMPOSE := $(shell if [ "$(shell uname)" = "Darwin" ]; then echo "docker 
 up:
 	@echo "[*] Starting Lab 1: Mini-Enterprise IAM Stack..."
 	@$(DOCKER_COMPOSE) up -d
+	@sleep 5
 	@echo "[*] Populating LDAP with seed data..."
 	@cat seed.ldif | docker exec -i "$$($(DOCKER_COMPOSE) ps -q ldap)" ldapadd -x -D "cn=admin,dc=example,dc=com" -w adminpw
 

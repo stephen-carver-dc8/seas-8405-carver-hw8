@@ -10,7 +10,7 @@ const memoryStore = new session.MemoryStore();
 
 const app = express();
 app.use(session({
-  secret: 'a very secret key',
+  secret: process.env.KEYCLOAK_KEY,
   resave: false,
   saveUninitialized: true,
   store: memoryStore
@@ -18,7 +18,7 @@ app.use(session({
 
 const keycloak = new Keycloak({ store: memoryStore }, {
   realm: REALM,
-  'auth-server-url': `${KEYCLOAK_URL}/realms/${REALM}`,
+  'auth-server-url': `${KEYCLOAK_URL}`,
   resource: CLIENT_ID,
   'public-client': true,
   'confidential-port': 0

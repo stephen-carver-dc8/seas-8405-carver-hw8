@@ -30,9 +30,27 @@ This lab demonstrates how to provision an OpenLDAP directory, federate it into K
       docker exec -i $KC /opt/keycloak/bin/kcadm.sh create realms      -s realm=CentralIAM -s enabled=true || true
 
       # Configure LDAP provider
-      docker exec -i $KC /opt/keycloak/bin/kcadm.sh create components -r CentralIAM <<EOF
-      {"name":"ldap","providerId":"ldap","providerType":"org.keycloak.storage.UserStorageProvider","config":{"editMode":["READ_ONLY"],"enabled":["true"],"vendor":["other"],"connectionUrl":["ldap://ldap:389"],"usersDn":["ou=People,dc=example,dc=com"],"authType":["simple"],"bindDn":["cn=admin,dc=example,dc=com"],"bindCredential":["adminpw"],"userObjectClasses":["inetOrgPerson"],"searchScope":["1"],"usernameLDAPAttribute":["uid"],"rdnLDAPAttribute":["uid"],"uuidLDAPAttribute":["entryUUID"],"pagination":["true"],"trustEmail":["true"],"importEnabled":["true"]}}
-      EOF
+      docker exec -i $KC /opt/keycloak/bin/kcadm.sh create components -r CentralIAM \
+  -s name=ldap \
+  -s providerId=ldap \
+  -s providerType=org.keycloak.storage.UserStorageProvider \
+  -s parentId=CentralIAM \
+  -s 'config.editMode=["READ_ONLY"]' \
+  -s 'config.enabled=["true"]' \
+  -s 'config.vendor=["other"]' \
+  -s 'config.connectionUrl=["ldap://ldap:389"]' \
+  -s 'config.usersDn=["ou=People,dc=example,dc=com"]' \
+  -s 'config.authType=["simple"]' \
+  -s 'config.bindDn=["cn=admin,dc=example,dc=com"]' \
+  -s 'config.bindCredential=["adminpw"]' \
+  -s 'config.userObjectClasses=["inetOrgPerson"]' \
+  -s 'config.searchScope=["1"]' \
+  -s 'config.usernameLDAPAttribute=["uid"]' \
+  -s 'config.rdnLDAPAttribute=["uid"]' \
+  -s 'config.uuidLDAPAttribute=["entryUUID"]' \
+  -s 'config.pagination=["true"]' \
+  -s 'config.trustEmail=["true"]' \
+  -s 'config.importEnabled=["true"]'
    ```
 
 4. Test DNS inside intranet container:
