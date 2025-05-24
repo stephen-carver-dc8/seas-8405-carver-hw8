@@ -1,0 +1,22 @@
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0
+    command: start-dev --import-realm
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import
+    ports:
+      - "8080:8080"
+
+  flask-app:
+    build: ./flask-app
+    environment:
+      - OIDC_ISSUER=http://localhost:8080/realms/seas8405
+      - OIDC_CLIENT_ID=flask-client
+      - OIDC_CLIENT_SECRET=secret
+    ports:
+      - "5000:5000"
+    depends_on:
+      - keycloak
