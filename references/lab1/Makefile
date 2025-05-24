@@ -15,7 +15,11 @@ down:
 
 reset: down
 	@docker system prune -f
-	@make up
+	@echo "[*] Starting Lab 1: Mini-Enterprise IAM Stack..."
+	@$(DOCKER_COMPOSE) up -d --build
+	@sleep 5
+	@echo "[*] Populating LDAP with seed data..."
+	@cat seed.ldif | docker exec -i "$$($(DOCKER_COMPOSE) ps -q ldap)" ldapadd -x -D "cn=admin,dc=example,dc=com" -w adminpw
 
 logs:
 	@$(DOCKER_COMPOSE) logs -f

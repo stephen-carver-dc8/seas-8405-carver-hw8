@@ -28,4 +28,5 @@ if "Welcome" in r2.text or "You are logged in" in r2.text:
     print("[✓] Login successful!")
 else:
     print("[✗] Login failed or SAML response not received.")
+    print(r2.text)
 

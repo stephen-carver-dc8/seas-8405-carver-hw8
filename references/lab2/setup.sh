@@ -47,3 +47,4 @@ echo "$RESPONSE" | jq
 echo "[✔] Setup complete. Access the Flask app at: http://localhost:15000"
 echo "[ℹ️ ] To test manually:"
 echo "curl -H \"Authorization: Bearer <access_token>\" http://localhost:15000"
+

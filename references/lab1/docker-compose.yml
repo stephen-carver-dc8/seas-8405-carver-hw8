@@ -50,9 +50,10 @@ services:
   intranet:
     build: ./intranet
     environment:
-      - KEYCLOAK_URL=http://host.docker.internal:8080   # Reach host's Keycloak
+      - KEYCLOAK_URL=http://localhost:8080   # Reach host's Keycloak
       - KEYCLOAK_REALM=CentralIAM
       - KEYCLOAK_CLIENT_ID=intranet
+      - KEYCLOAK_KEY=ioSmWzDFdZMzobkmLTqdbNIivrJARFYX
     extra_hosts:
       - "host.docker.internal:host-gateway"          # map host.docker.internal to host
     ports:
