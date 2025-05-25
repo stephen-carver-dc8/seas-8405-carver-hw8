@@ -10,7 +10,8 @@ down:
 
 reset: down
 	@docker system prune -f
-	@bash setup.sh
+	@docker compose down -v
+	@docker compose up -d --build 
 
 logs:
 	@$(DOCKER_COMPOSE) logs -f

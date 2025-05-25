@@ -4,7 +4,7 @@ This project demonstrates a secure Identity and Access Management (IAM) architec
 
 ---
 
-## 🏗 Architecture Overview
+## Architecture Overview
 
 * **Keycloak** (Identity Provider): Provides user authentication and token issuance.
 * **Flask App** (Resource Server): Secures routes by validating JWTs using Keycloak’s public keys.
@@ -12,7 +12,7 @@ This project demonstrates a secure Identity and Access Management (IAM) architec
 
 ---
 
-## 🔧 Setup Instructions
+## Setup Instructions
 
 ### 1. Clone the Repository
 
@@ -42,8 +42,20 @@ This will:
 * **Test User**: `test-user` / `password`
 
 ---
+## Website Useage
 
-## 🔐 API Protection
+* The Flask app has a home page that redirects to Keycloak login
+* If successfully authenticated, shows users profile information
+
+### Sample Log-in
+
+```
+http://localhost:5000
+```
+
+---
+
+## API Protection
 
 * The Flask app validates JWTs from the `Authorization: Bearer <token>` header.
 * The JWKS endpoint from Keycloak is used to verify the token signature.
@@ -63,30 +75,15 @@ curl http://localhost:5000/protected
 
 ---
 
-## 📁 Project Structure
-
-```
-.
-├── flask-app/
-│   ├── app.py
-│   └── requirements.txt
-├── keycloak/
-│   └── realm-export.json
-├── docker-compose.yml
-├── Makefile
-└── README.md
-```
-
----
-
-## 📚 References
+## References
 
 * [Keycloak Documentation](https://www.keycloak.org/docs/latest/)
+* [AuthLib Documentation](https://github.com/authlib/authlib/blob/main/tests/clients/test_flask/test_oauth_client.py)
 * Based on course Labs: [Lab1](../lab1), [Lab2](../lab2), [Lab3](../lab3)
 
 ---
 
-## 🧪 Testing Summary
+## Testing Summary
 
 * Tokens are validated correctly
 * Invalid or missing tokens are rejected

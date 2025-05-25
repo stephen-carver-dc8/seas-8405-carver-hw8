@@ -1,3 +1,5 @@
 flask
 python-jose
 requests
+authlib
+pyOpenSSL

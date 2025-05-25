@@ -6,6 +6,9 @@
       "username": "test-user",
       "enabled": true,
       "emailVerified": true,
+      "lastName": "Test",
+      "firstName":"Test",
+      "email": "test@test.com",
       "credentials": [
         {
           "type": "password",
@@ -22,7 +25,7 @@
       "protocol": "openid-connect",
       "publicClient": false,
       "secret": "secret",
-      "redirectUris": ["*"],
+      "redirectUris": ["http://localhost:5000/*"],
       "directAccessGrantsEnabled": true,
       "standardFlowEnabled": true,
       "serviceAccountsEnabled": true,

@@ -13,10 +13,14 @@ services:
   flask-app:
     build: ./flask-app
     environment:
-      - OIDC_ISSUER=http://localhost:8080/realms/seas8405
-      - OIDC_CLIENT_ID=flask-client
-      - OIDC_CLIENT_SECRET=secret
+    - APP_SECRET=supersecretkey
+    - KEYCLOAK_URL=http://host.docker.internal:8080
+    - KEYCLOAK_REALM=seas8405
+    - KEYCLOAK_CLIENT_ID=flask-client
+    - KEYCLOAK_CLIENT_SECRET=secret
     ports:
       - "5000:5000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   
     depends_on:
       - keycloak
