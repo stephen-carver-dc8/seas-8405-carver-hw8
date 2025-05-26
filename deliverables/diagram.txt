@@ -1,31 +1,20 @@
-@startuml
-skinparam defaultTextAlignment center
-skinparam componentStyle rectangle
-skinparam ArrowColor black
-skinparam ArrowThickness 1
-
-actor "User" as user
-rectangle "WebClient\n(Browser)" as webclient
-rectangle "APIClient\n(Script or Mobile App)" as apiclient
-rectangle "Website\n(Resource Server)" as website
-rectangle "Keycloak\n(Authorization Server)" as keycloak
-
-' WebClient (Browser) OAuth\OIDC Flow
-user --> webclient : W1. Uses WebClient
-webclient --> website : W2. Access protected page
-website --> keycloak : W3. Redirect to Keycloak login
-keycloak --> webclient : W4. Redirect back with auth code
-webclient --> website : W5. Send auth code
-website --> keycloak : W6. Exchange code for token
-keycloak --> website : W7. Return token
-website --> keycloak : W8. Validate token (JWKS)
-website --> webclient : W9. Return user session info
-
-' APIClient (Script) OAuth Flow
-user --> apiclient : A1. Uses APIClient
-apiclient --> keycloak : A2. Send user/pass
-keycloak --> apiclient : A3. Return access token
-apiclient --> website : A4. Send token
-website --> keycloak : A5. Validate token (JWKS)
-website --> apiclient : A6. Return user/session info
-@enduml
+---
+config:
+  layout: elk
+---
+flowchart TD
+    User["User via Browser"] -- Navigates to Flask App --> Flask_App("Flask App - localhost:5000")
+    Flask_App -- "1 - Accesses /" --> User
+    User -- "2 - Clicks Login" --> Flask_App_Login("Flask App /login")
+    Flask_App_Login -- "3 - OIDC Auth Redirect (302) with nonce" --> Keycloak("Keycloak - localhost:8080/realms/seas8405")
+    User -- "4 - Authenticates with Credentials" --> Keycloak
+    Keycloak -- "5 - Issues Auth Code" --> Flask_App_Auth("Flask App /auth - Redirect URI")
+    Flask_App_Auth -- "6 - Exchanges Auth Code + Client Secret for Tokens" --> Keycloak_Token_Endpoint("Keycloak Token Endpoint")
+    Keycloak_Token_Endpoint -- "7 - Returns ID Token & Access Token" --> Flask_App_Auth
+    Flask_App_Auth -- "8 - Validates ID Token (nonce), Stores User Info in Session" --> SessionDB[("Session")]
+    Flask_App_Auth -- "9 - Redirects" --> Flask_App_Profile("Flask App /profile")
+    Flask_App_Profile -- "10 - Displays User Info" --> User
+    Client_App["External Client/User with CURL"] -- "1 - Request with Bearer Token" --> Flask_App_Protected("Flask App /protected")
+    Flask_App_Protected -- "2 - Validates JWT" --> Keycloak_JWKS_Endpoint("Keycloak JWKS Endpoint")
+    Keycloak_JWKS_Endpoint -- "3 - Returns Public Keys" --> Flask_App_Protected
+    Flask_App_Protected -- "4 - Returns Protected Resource" --> Client_App
