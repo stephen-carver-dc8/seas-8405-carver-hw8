@@ -1,0 +1,31 @@
+@startuml
+skinparam defaultTextAlignment center
+skinparam componentStyle rectangle
+skinparam ArrowColor black
+skinparam ArrowThickness 1
+
+actor "User" as user
+rectangle "WebClient\n(Browser)" as webclient
+rectangle "APIClient\n(Script or Mobile App)" as apiclient
+rectangle "Website\n(Resource Server)" as website
+rectangle "Keycloak\n(Authorization Server)" as keycloak
+
+' WebClient (Browser) OAuth\OIDC Flow
+user --> webclient : W1. Uses WebClient
+webclient --> website : W2. Access protected page
+website --> keycloak : W3. Redirect to Keycloak login
+keycloak --> webclient : W4. Redirect back with auth code
+webclient --> website : W5. Send auth code
+website --> keycloak : W6. Exchange code for token
+keycloak --> website : W7. Return token
+website --> keycloak : W8. Validate token (JWKS)
+website --> webclient : W9. Return user session info
+
+' APIClient (Script) OAuth Flow
+user --> apiclient : A1. Uses APIClient
+apiclient --> keycloak : A2. Send user/pass
+keycloak --> apiclient : A3. Return access token
+apiclient --> website : A4. Send token
+website --> keycloak : A5. Validate token (JWKS)
+website --> apiclient : A6. Return user/session info
+@enduml
