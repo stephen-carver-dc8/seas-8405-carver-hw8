@@ -3,15 +3,15 @@
 DOCKER_COMPOSE := $(shell command -v docker-compose > /dev/null && echo docker-compose || echo docker compose)
 
 up:
-	@bash setup.sh
+	@$(DOCKER_COMPOSE) up -d --build 
 
 down:
 	@$(DOCKER_COMPOSE) down -v
 
 reset: down
 	@docker system prune -f
-	@docker compose down -v
-	@docker compose up -d --build 
+	@$(DOCKER_COMPOSE) up -d --build 
+	@python3 test.py
 
 logs:
 	@$(DOCKER_COMPOSE) logs -f

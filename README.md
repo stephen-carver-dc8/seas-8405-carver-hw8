@@ -1,6 +1,6 @@
 # SEAS 8405 Homework 8: Secure IAM Architecture
 
-This project demonstrates a secure Identity and Access Management (IAM) architecture using **Keycloak** as an identity provider and a protected **Flask** microservice. The system enforces authentication and authorization using **OAuth 2.0** and **OpenID Connect (OIDC)**.
+This project demonstrates a secure Identity and Access Management (IAM) architecture using Keycloak as an identity provider and a protected Flask microservice. The system enforces authentication and authorization using OAuth 2.0 and OpenID Connect (OIDC).
 
 ---
 
@@ -79,17 +79,19 @@ curl http://localhost:5000/protected
 
 * [Keycloak Documentation](https://www.keycloak.org/docs/latest/)
 * [AuthLib Documentation](https://github.com/authlib/authlib/blob/main/tests/clients/test_flask/test_oauth_client.py)
-* Based on course Labs: [Lab1](../lab1), [Lab2](../lab2), [Lab3](../lab3)
+* Based on course Labs: [Lab1](./references/lab1/), [Lab2](./references/lab2/), [Lab3](./references/lab3/)
 
 ---
 
 ## Testing Summary
-
+* `make reset` reliably resets and tests the environment
+* Python Test
+```python
+test.py
+```
 * Tokens are validated correctly
 * Invalid or missing tokens are rejected
-* Realm and client are imported automatically
-* `make reset` reliably resets and tests the environment
-
+* Realm and client are imported automaticall
 ---
 
-For threat modeling and mitigation strategies, see `threat_model.md`.
+For threat modeling and mitigation strategies, see [report.md](./deliverables/report.md).
