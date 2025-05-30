@@ -14,13 +14,13 @@ services:
     build: ./flask-app
     environment:
     - APP_SECRET=supersecretkey
-    - KEYCLOAK_URL=http://host.docker.internal:8080
+    - KEYCLOAK_URL=http://localhost:8080
     - KEYCLOAK_REALM=seas8405
     - KEYCLOAK_CLIENT_ID=flask-client
     - KEYCLOAK_CLIENT_SECRET=secret
     ports:
       - "5000:5000"
     extra_hosts:
-      - "host.docker.internal:host-gateway"   
+      - "localhost:host-gateway"   
     depends_on:
       - keycloak
